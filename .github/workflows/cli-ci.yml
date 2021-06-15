@@ -1,0 +1,38 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI for CLI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+    paths:
+    - src/cli/**
+  pull_request:
+    branches: [ main ]
+    paths:
+    - src/cli/**
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+env:
+  PROJECT_PATH: src/cli/mailboxy.csproj
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.x
+      - name: Restore
+        run: dotnet restore $PROJECT_PATH
+      - name: Build
+        run: dotnet build -c Release --no-restore $PROJECT_PATH
+      - name: Publish
+        if: ${{ github.event_name == 'push' }}
+        run: dotnet publish -c Release -o publish --no-build $PROJECT_PATH
