@@ -5,6 +5,6 @@ namespace Mailboxy
 {
     public interface IMailboxService
     {
-        Task<IEnumerable<MailMessage>> FetchMessages();
+        Task<IEnumerable<MailMessage>> FetchMessages(IMailboxyProvider provider);
     }
 }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,6 +8,17 @@
 
   <ItemGroup>
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.21216.1" />
+    <PackageReference Include="YamlDotNet" Version="11.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\shared\Mailboxy.Abstract.Action\Mailboxy.Abstract.Action.csproj" />
+    <ProjectReference Include="..\shared\Mailboxy.Abstract.Provider\Mailboxy.Abstract.Provider.csproj" />
+    <ProjectReference Include="..\shared\Mailboxy.Core\Mailboxy.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="config.yml" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
