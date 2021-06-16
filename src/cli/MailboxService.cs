@@ -1,14 +1,24 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Mailboxy
 {
     public class MailboxService : IMailboxService
     {
-        public async Task<IEnumerable<MailMessage>> FetchMessages()
+        private readonly MailboxyConfig _config;
+
+        public MailboxService(MailboxyConfig config)
         {
-            //throw new System.NotImplementedException();
-            return await Task.FromResult(new List<MailMessage>());
+            _config = config;
+        }
+
+        public Task<IEnumerable<MailMessage>> FetchMessages(IMailboxyProvider provider)
+        {
+            return provider.FetchMessages();
         }
     }
 }

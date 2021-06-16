@@ -9,7 +9,10 @@ namespace Mailboxy
         {
             var rootCommand = new RootCommand("Simple application to watch your mailbox and chain it with certain actions");
 
-            var watchCommand = new WatchCommand(new MailboxService());
+            var configService = new ConfigurationService();
+            var config = await configService.LoadConfig();
+            
+            var watchCommand = new WatchCommand(new PluginService(config), new MailboxService(config));
             
             var configCommand = new ConfigCommand();
             

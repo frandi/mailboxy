@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "mailboxy": {
+      "commandName": "Project",
+      "commandLineArgs": "watch"
+    }
+  }
+}

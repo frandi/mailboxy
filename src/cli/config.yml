@@ -1,0 +1,9 @@
+version: 1.0
+defaultProvider: Gmail
+activeActions:
+  - PrintScreen
+providers:
+  - name: Gmail
+    dllFile: Gmail/Mailboxy.Provider.Gmail.dll
+actions:
+  - name: PrintScreen
